@@ -15,10 +15,10 @@ while True:
         break
 
     # Realizar inferencia
-    results = model.predict(source=img, save=False, show=False, conf=0.5)
-    print(results)
+    results = model.predict(source=img, save=False, show=False, conf=0.7)
     # Dibujar las detecciones en la imagen
     for result in results[0].boxes:
+        
         box = result.xyxy[0]  # Coordenadas de la caja [x1, y1, x2, y2]
         conf = result.conf[0]  # Confianza de la detección
         cls = result.cls[0]  # Clase detectada
@@ -27,9 +27,13 @@ while True:
         
         # Dibujar la caja
         x1, y1, x2, y2 = map(int, box)  # Convertir coordenadas a enteros
-        cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)  # Caja azul
-        # Dibujar la etiqueta
-        cv2.putText(img, label, (max(0, x1), max(35, y1 - 10)), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        box_area = (x2 - x1) * (y2 - y1)
+        print(f'Area: {box_area}')
+        if model.names[int(cls)] in accepted_classes:
+
+            cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)  # Caja azul
+            # Dibujar la etiqueta
+            cv2.putText(img, label, (max(0, x1), max(35, y1 - 10)), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
     # Show fps
     Ctime = time.time()
     fps = 1 / (Ctime - Ptime)
