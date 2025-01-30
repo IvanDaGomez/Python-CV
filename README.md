@@ -17,7 +17,7 @@ This repository contains multiple computer vision projects utilizing OpenCV, Med
    ```
 2. Install dependencies:  
    ```bash
-   pip install -r requirements.txt
+   pip install opencv-python mediapipe ultralytics numpy
    ```
 
 ## 📂 Project Descriptions  
@@ -61,11 +61,6 @@ This repository contains multiple computer vision projects utilizing OpenCV, Med
   python yolo_detect.py --source input_video.mp4
   ```
 
-## 📜 Dependencies  
-Install dependencies from `requirements.txt` or manually install them:  
-```bash
-pip install opencv-python mediapipe ultralytics numpy
-```
 
 ## 📸 Examples  
 Here are some examples of the projects in action:  
