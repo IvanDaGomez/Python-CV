@@ -4,7 +4,7 @@ This repository contains multiple computer vision projects utilizing OpenCV, Med
 
 ## 📌 Table of Contents  
 - [🔧 Setup](#-setup)  
-- [📂 Project Descriptions](#-project-descriptions)  
+- [📂 Module Descriptions](#-module-descriptions)  
 - [🚀 Running the Projects](#-running-the-projects)  
 - [📜 Dependencies](#-dependencies)  
 - [📸 Examples](#-examples)  
@@ -20,12 +20,12 @@ This repository contains multiple computer vision projects utilizing OpenCV, Med
    pip install opencv-python mediapipe ultralytics numpy
    ```
 
-## 📂 Project Descriptions  
+## 📂 Module Descriptions  
 ### 1️⃣ OpenCV Basic Operations  
 - Image processing techniques such as edge detection, thresholding, and filtering.  
 - Video processing with OpenCV.  
 
-### 2️⃣ Mediapipe Projects  
+### 2️⃣ Mediapipe Projects (cvModules)
 #### ✋ Hand Tracking  
 - Tracks and identifies hand landmarks in real-time.  
 - Used for gesture recognition and virtual controls.  
@@ -41,26 +41,36 @@ This repository contains multiple computer vision projects utilizing OpenCV, Med
 
 ### 3️⃣ YOLOv8 Object Detection  
 - Utilizes Ultralytics YOLOv8 for real-time object detection.  
-- Supports custom dataset training and inference on images and videos.  
+- There is a basic object detector pretrained and a car plate registrator.
+
+### 4️⃣ Face recognition (faceRecognition)
+- Utilizes face_recognition library to analyze specific faces and name them based on images loaded.
+- Done a mark attendance implementation for a class that could use this method
 
 ## 🚀 Running the Projects  
-- OpenCV:  
+
+
+- Mediapipe:
+  Just import the library
   ```bash
-  python opencv_basic.py
+  from cvModules.handDetector import HandDetector
   ```
-- Mediapipe Hand Tracking:  
+  and in your project initialize the class and read the image.
   ```bash
-  python mediapipe_hand.py
-  ```
-- Mediapipe Face Mesh:  
-  ```bash
-  python mediapipe_face_mesh.py
+  detector = HandDetector()
+  img = detector.findHands(img)
   ```
 - YOLOv8 Object Detection:  
   ```bash
-  python yolo_detect.py --source input_video.mp4
+  cd YOLO
+  python yoloFirst.py
   ```
-
+- Face recognition
+  ```bash
+  cd faceRecognition
+  python faceRecognition.py
+  ```
+  You can upload images to the 'Images' folder or take a picture while the program runs pressing 's'
 
 ## 📸 Examples  
 Here are some examples of the projects in action:  
